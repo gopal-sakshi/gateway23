@@ -7,7 +7,7 @@ exports.proxies_links23 = {                                 // it has "2 paths" 
             [`^/simpleExpressQuote`]: "",
         },
     },
-    "simpleExpressBuffer": {
+    "/simpleExpressBuffer": {
         protected: false,
         target: "http://localhost:3044/buffer",
         changeOrigin: true,
