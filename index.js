@@ -68,7 +68,14 @@ app.use(
 
 
 /**************************** ROUTES ************************************* */
-
+/* 
+    when we call login ---> we sent cookie header, along with other headers --> Host, connection: keep-alive
+    
+    connect.sid=s%3A7urS7_L_XX6564MLlmIxL9YksBwvUHN8.eB4N9LkgXlznauAMSwvaPL6XFqWEV%2FbtOTXyQxlMHJM
+    perhaps express takes this cookie from req headers... saves in req.session object
+    compares if this cookie exists in server storage
+    and if exists sends authenticated
+*/ 
 app.get("/login", (req, res) => {
     const { authenticated } = req.session;
 
@@ -89,6 +96,14 @@ app.get("/protected", protected23, (req, res) => {
     res.send(`Hello ${name}!`);
 });
 
+
+/*
+    3 cookies via "Set-Cookie" header
+        connect.sid=s%3A7urS7_L_XX6564MLlmIxL9YksBwvUHN8.eB4N9LkgXlznauAMSwvaPL6XFqWEV%2FbtOTXyQxlMHJM
+        Path=/
+        HttpOnly
+
+*/
 app.get("/", (req, res) => {
     const { name = "user" } = req.query;
     res.send(`Hello ${name}!`);

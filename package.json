@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "waituu": ""
+    "waituu": "",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "GopAL",
